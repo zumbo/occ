@@ -1,0 +1,54 @@
+.label {
+	font-weight: bold;
+}
+
+.data-table {
+	border-collapse: collapse;
+    empty-cells: show;
+    border: 1px solid #BBBBBB;
+}
+
+.data-table th {
+	text-align: center;
+	background: none repeat scroll 0 0 #E5E5E5;
+	border-bottom: 1px solid #BBBBBB;
+	padding: 6px;
+}
+
+.data-table tr {
+	text-align: center;
+	background: none repeat scroll 0 0 #F9F9F9;
+	border-top: 1px solid #BBBBBB;
+}
+
+.glyphicon {
+    cursor: pointer;
+}
+
+span[contenteditable="true"] {
+    height: 16px; /* Firefox-hack */
+    width: 100%;
+    display: inline-block;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #f4f4f4;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td, .table-striped>tbody>tr:nth-child(even)>th {
+    background-color: #fafafa;
+}
+
+td.editable {
+    background-color: white !important;
+    border: solid #808080 1px !important;
+}
+
+footer {
+    border-top: 1px solid #e5e5e5;
+    color: #777;
+    margin-top: 100px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+}

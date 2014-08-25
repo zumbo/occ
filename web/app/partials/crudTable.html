@@ -1,0 +1,21 @@
+<table class="table table-striped table-condensed">
+   <tbody>
+   <tr>
+       <th ng-repeat="columnTitle in data.columnTitles">{{columnTitle}}</th>
+       <th></th>
+       <th></th>
+   </tr>
+   <tr ng-repeat="item in data.items" id="row{{item.id}}">
+       <td ng-repeat="column in data.columns" ng-class="item.isEditing ? 'editable' : ''"><span contenteditable="{{item.isEditing}}" ng-model="item[column]" ng-keydown="onKey($event, $parent.$index)" ng-dblclick="edit($parent.$index, $event)" /></td>
+       <td ng-hide="item.isEditing"><span ng-click="edit($index)"><span class="glyphicon glyphicon-pencil"></span></span></td>
+       <td ng-hide="item.isEditing"><span ng-click="delete($index)"><span class="glyphicon glyphicon-trash"></span></span></td>
+       <td ng-show="item.isEditing"><span ng-click="cancel($index)"><span class="glyphicon glyphicon-remove"></span></span></td>
+       <td ng-show="item.isEditing"><span ng-click="save($index)" ng-show="item.isValid()"><span class="glyphicon glyphicon-floppy-disk"></span></span></td>
+   </tr>
+   <tr id="newLine" ng-hide="territoryNotSet()">
+       <td ng-repeat="column in data.columns" class="editable"><span contenteditable="true" ng-model="data.newLine[column]" ng-keydown="onKey($event, 'newLine')" /></td>
+       <td>&nbsp;</td>
+       <td><span ng-show="data.newLine.isValid()" ng-click="saveNewLine()"><span class="glyphicon glyphicon-floppy-disk"></span></span></td>
+   </tr>
+   </tbody>
+</table>

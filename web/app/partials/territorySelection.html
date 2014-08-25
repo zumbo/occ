@@ -1,0 +1,18 @@
+<div ng-controller="TerritoryController">
+    <div>
+        <angucomplete-alt pause="100" selected-object="selection.typedTerritory" local-data="territoryData.allTerritories"
+                          placeholder="Search countries" search-fields="name" title-field="name" minlength="1"
+                          input-class="form-control form-control-small" match-class="highlight"/>
+    </div>
+    <div>
+        <select ng-model="selection.territory" ng-options="territory.name for territory in territoryData.topTerritories"
+                ng-change="loadSubTerritories(); update()">
+            <option value="">-- Choose a country --</option>
+        </select>
+        <select ng-model="selection.subTerritory" ng-show="territoryData.subTerritories.length"
+                ng-options="territory.name for territory in territoryData.subTerritories"
+                ng-change="update()">
+            <option value="">-- Choose a territory --</option>
+        </select>
+    </div>
+</div>
