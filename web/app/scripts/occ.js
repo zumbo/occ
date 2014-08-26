@@ -1,4 +1,4 @@
-var OCCModule = angular.module('OCC', [ 'ngResource', 'ngRoute', /*, 'angucomplete-alt'*/ ]).
+var OCCModule = angular.module('OCC', [ 'ngResource', 'ngRoute' ]).
     run(function ($locale, $controller) {
         $locale.id = 'en';
         OCCModule.getLanguage = function () {
@@ -14,35 +14,62 @@ var OCCModule = angular.module('OCC', [ 'ngResource', 'ngRoute', /*, 'angucomple
         }
     });
 
-OCCModule.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
-    $routeProvider
-        .when('/grade', {
-            templateUrl: '../partials/crudLanguageView.html',
-            controller: 'GradeController'
-        })
-        .when('/metal', {
-            templateUrl: '../partials/crudLanguageView.html',
-            controller: 'MetalController'
-        })
-        .when('/quality', {
-            templateUrl: '../partials/crudLanguageView.html',
-            controller: 'QualityController'
-        })
-        .when('/mintmark', {
-            templateUrl: '../partials/crudTerritoryView.html',
-            controller: 'MintmarkController'
-        })
-        .when('/epoch', {
-            templateUrl: '../partials/crudTerritoryView.html',
-            controller: 'EpochController'
-        })
-        .otherwise({
-            templateUrl: '../partials/home.html'
-        });
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-}
+OCCModule.config(['$routeProvider', '$httpProvider',
+    function ($routeProvider, $httpProvider) {
+        $routeProvider
+            .when('/grade', {
+                templateUrl: '../partials/crudLanguageView.html',
+                controller: 'GradeController',
+                resolve: {
+                    dataItems: function(GradeService) {
+                        return GradeService.load();
+                    }
+                }
+            })
+            .when('/metal', {
+                templateUrl: '../partials/crudLanguageView.html',
+                controller: 'MetalController',
+                resolve: {
+                    dataItems: function(MetalService) {
+                        return MetalService.load();
+                    }
+                }
+            })
+            .when('/quality', {
+                templateUrl: '../partials/crudLanguageView.html',
+                controller: 'QualityController',
+                resolve: {
+                    dataItems: function(QualityService) {
+                        return QualityService.load();
+                    }
+                }
+            })
+            .when('/mintmark', {
+                templateUrl: '../partials/crudTerritoryView.html',
+                controller: 'MintmarkController',
+                resolve: {
+                    dataItems: function(MintmarkService) {
+                        return MintmarkService.load();
+                    }
+                }
+            })
+            .when('/epoch', {
+                templateUrl: '../partials/crudTerritoryView.html',
+                controller: 'EpochController',
+                resolve: {
+                    dataItems: function(EpochService) {
+                        return EpochService.load();
+                    }
+                }
+            })
+            .otherwise({
+                templateUrl: '../partials/home.html'
+            });
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
 ]);
+
 
 
 

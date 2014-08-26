@@ -1,6 +1,6 @@
-OCCModule.controller('GradeController', function ($scope, $resource) {
+OCCModule.controller('GradeController', function ($scope, GradeService, dataItems) {
     $scope.title = 'Grades';
     $scope.data = { columns: ['name', 'abbr'], columnTitles: ['Name', 'Abbreviation']};
 
-    OCCModule.CrudBase.call(this, $scope, 'grade', $resource);
+    OCCModule.CrudBase.call(this, $scope, GradeService, dataItems);
 });

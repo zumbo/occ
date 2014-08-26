@@ -1,27 +1,4 @@
-OCCModule.CrudBase = function ($scope, name, $resource) {
-    var service = $resource('http://localhost:8080/occ/rest/' + name + '/:id', {
-        id: '@id',
-        lang: OCCModule.getLanguage,
-        territory: OCCModule.getTerritory
-    }, {
-        load: {
-            method: 'GET',
-            isArray: true
-        },
-        update: {
-            method: 'PUT'
-        },
-        save: {
-            method: 'POST',
-            isArray: false,
-            interceptor: {
-                response: function (response) {
-                    return response.data;
-                }
-            }
-        }
-    });
-
+OCCModule.CrudBase = function ($scope, service, dataItems) {
     var columns = $scope.data.columns;
 
     function isValid() {
@@ -46,8 +23,7 @@ OCCModule.CrudBase = function ($scope, name, $resource) {
     $scope.reload = function () {
         $scope.data.items = service.load(onLoaded);
     }
-    $scope.reload();
-
+    $scope.data.items = dataItems;
     $scope.data.newLine = { isValid: isValid };
 
     for (var i = 0; i < columns.length; i++) {
@@ -98,7 +74,7 @@ OCCModule.CrudBase = function ($scope, name, $resource) {
         var item = $scope.data.items[index];
         var confirmed = window.confirm('Are you absolutely sure you want to delete ' + item.name + '?');
         if (!confirmed) return;
-        $scope.data.items.splice(index, 1);
+        $scope.data.items.splice(index,  1);
         service.remove({id: item.id});
     }
     $scope.saveNewLine = function () {
