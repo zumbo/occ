@@ -24,6 +24,8 @@ OCCModule.CrudBase = function ($scope, service, dataItems) {
         $scope.data.items = service.load(onLoaded);
     }
     $scope.data.items = dataItems;
+    $scope.data.items.$promise.then(onLoaded());
+
     $scope.data.newLine = { isValid: isValid };
 
     for (var i = 0; i < columns.length; i++) {
@@ -44,10 +46,8 @@ OCCModule.CrudBase = function ($scope, service, dataItems) {
         var focusCell;
         if (event && event.target) {
             focusCell = event.target;
-            alert('a1')
         }
         else {
-            alert('b2')
             focusCell = document.querySelector('#row' + item.id + ' span');
         }
         setTimeout(function () {
