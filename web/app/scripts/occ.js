@@ -1,12 +1,5 @@
 var OCCModule = angular.module('OCC', [ 'ngResource', 'ngRoute' ]).
-    run(function ($locale, $controller) {
-        $locale.id = 'en';
-        OCCModule.getLanguage = function () {
-            if ($locale && $locale.id && $locale.id.length >= 2) {
-                return $locale.id.substr(0, 2);
-            }
-            return 'en';
-        }
+    run(function () {
         OCCModule.getTerritory = function () {
             if (OCCModule.selectedTerritory) {
                 return OCCModule.selectedTerritory.id;

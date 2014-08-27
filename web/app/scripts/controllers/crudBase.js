@@ -1,4 +1,4 @@
-OCCModule.CrudBase = function ($scope, service, dataItems) {
+OCCModule.CrudBase = function ($scope, service, dataItems, LanguageSelection) {
     var columns = $scope.data.columns;
 
     function isValid() {
@@ -81,7 +81,7 @@ OCCModule.CrudBase = function ($scope, service, dataItems) {
         var newLine = $scope.data.newLine;
         var insertItem = JSON.parse(JSON.stringify(newLine));
         insertItem.isValid = isValid;
-        insertItem.language = OCCModule.getLanguage();
+        insertItem.language = LanguageSelection.getSelectionCode();
         if ($scope.filterByTerritory) {
             insertItem.territory = OCCModule.getTerritory();
         }

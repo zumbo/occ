@@ -1,4 +1,4 @@
-OCCModule.factory('Territory', [ '$resource', '$http', function ($resource) {
+OCCModule.factory('Territory', [ '$resource', 'LanguageSelection', function ($resource, LanguageSelection) {
     return $resource('http://localhost:8080/occ/rest/territory/:territoryId', {
         territoryId: '@id'
     }, {
@@ -6,7 +6,7 @@ OCCModule.factory('Territory', [ '$resource', '$http', function ($resource) {
             method: 'GET',
             params: {
                 parent: 0,
-                lang: OCCModule.getLanguage()
+                lang: LanguageSelection.getSelectionCode()
             },
             isArray: true
         }
