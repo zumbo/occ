@@ -1,4 +1,4 @@
-OCCModule.CrudBase = function ($scope, service, dataItems, LanguageSelection) {
+OCCModule.CrudBase = function ($scope, service, dataItems, Settings) {
     var columns = $scope.data.columns;
 
     function isValid() {
@@ -33,7 +33,7 @@ OCCModule.CrudBase = function ($scope, service, dataItems, LanguageSelection) {
     }
 
     $scope.territoryNotSet = function () {
-        return $scope.filterByTerritory && !OCCModule.getTerritory();
+        return $scope.filterByTerritory && !Settings.getTerritory();
     };
 
     $scope.edit = function (index, event) {
@@ -81,9 +81,9 @@ OCCModule.CrudBase = function ($scope, service, dataItems, LanguageSelection) {
         var newLine = $scope.data.newLine;
         var insertItem = JSON.parse(JSON.stringify(newLine));
         insertItem.isValid = isValid;
-        insertItem.language = LanguageSelection.getSelectionCode();
+        insertItem.language = Settings.getLanguageCode();
         if ($scope.filterByTerritory) {
-            insertItem.territory = OCCModule.getTerritory();
+            insertItem.territory = Settings.getTerritory();
         }
         if (!insertItem.isValid()) return;
 

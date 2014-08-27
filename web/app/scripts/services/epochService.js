@@ -1,3 +1,3 @@
-OCCModule.factory('EpochService', function ($resource, LanguageSelection) {
-    return OCCModule.CrudService($resource, 'epoch', LanguageSelection);
+OCCModule.factory('EpochService', function ($resource, Settings) {
+    return OCCModule.CrudService($resource, 'epoch', Settings);
 });

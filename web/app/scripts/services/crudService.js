@@ -1,9 +1,8 @@
-OCCModule.CrudService = function($resource, name, LanguageSelection) {
-    console.log(LanguageSelection);
+OCCModule.CrudService = function($resource, name, Settings) {
     return $resource('http://localhost:8080/occ/rest/' + name + '/:id', {
         id: '@id',
-        lang: LanguageSelection.getSelectionCode,
-        territory: OCCModule.getTerritory
+        lang: Settings.getLanguageCode,
+        territory: Settings.getTerritoryId
     }, {
         load: {
             method: 'GET',

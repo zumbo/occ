@@ -1,3 +1,3 @@
-OCCModule.factory('QualityService', function ($resource, LanguageSelection) {
-    return OCCModule.CrudService($resource, 'quality', LanguageSelection);
+OCCModule.factory('QualityService', function ($resource, Settings) {
+    return OCCModule.CrudService($resource, 'quality', Settings);
 });

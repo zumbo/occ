@@ -1,11 +1,4 @@
-var OCCModule = angular.module('OCC', [ 'ngResource', 'ngRoute' ]).
-    run(function () {
-        OCCModule.getTerritory = function () {
-            if (OCCModule.selectedTerritory) {
-                return OCCModule.selectedTerritory.id;
-            }
-        }
-    });
+var OCCModule = angular.module('OCC', [ 'ngResource', 'ngRoute' ]);
 
 OCCModule.config(['$routeProvider', '$httpProvider',
     function ($routeProvider, $httpProvider) {

@@ -5,11 +5,11 @@
                           input-class="form-control form-control-small" match-class="highlight"/>
     </div>
     <div>
-        <select ng-model="selection.territory" ng-options="territory.name for territory in territoryData.topTerritories"
+        <select ng-model="selection.territory" ng-model-options="{ getterSetter: true }" ng-options="territory.name for territory in territoryData.topTerritories"
                 ng-change="loadSubTerritories(); update()">
             <option value="">-- Choose a country --</option>
         </select>
-        <select ng-model="selection.subTerritory" ng-show="territoryData.subTerritories.length"
+        <select ng-model="selection.subTerritory" ng-model-options="{ getterSetter: true }" ng-show="territoryData.subTerritories.length"
                 ng-options="territory.name for territory in territoryData.subTerritories"
                 ng-change="update()">
             <option value="">-- Choose a territory --</option>

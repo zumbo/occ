@@ -1,3 +1,3 @@
-OCCModule.factory('GradeService', function ($resource, LanguageSelection) {
-    return OCCModule.CrudService($resource, 'grade', LanguageSelection);
+OCCModule.factory('GradeService', function ($resource, Settings) {
+    return OCCModule.CrudService($resource, 'grade', Settings);
 });

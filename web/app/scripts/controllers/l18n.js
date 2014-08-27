@@ -1,10 +1,10 @@
-OCCModule.controller('L18n', function ($scope, $route, $locale, LanguageSelection) {
-    $scope.languages = LanguageSelection.languages;
+OCCModule.controller('L18n', function ($scope, $route, $locale, Settings) {
+    $scope.languages = Settings.languages;
     $scope.displayLanguage = function (displayLanguage) {
         if (angular.isDefined(displayLanguage)) {
-            LanguageSelection.setSelection(displayLanguage);
+            Settings.setLanguage(displayLanguage);
         }
-        return LanguageSelection.getSelection();
+        return Settings.getLanguage();
     };
 
     $scope.update = function () {

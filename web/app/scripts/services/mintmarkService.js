@@ -1,3 +1,3 @@
-OCCModule.factory('MintmarkService', function ($resource, LanguageSelection) {
-    return OCCModule.CrudService($resource, 'mintmark', LanguageSelection);
+OCCModule.factory('MintmarkService', function ($resource, Settings) {
+    return OCCModule.CrudService($resource, 'mintmark', Settings);
 });
