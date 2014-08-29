@@ -1,6 +1,6 @@
-OCCModule.controller('QualityController', function ($scope, QualityService, dataItems, Settings) {
+OCCModule.controller('QualityController', function ($scope, $injector, QualityService, dataItems) {
     $scope.title = 'Minting qualities';
     $scope.data = { columns: ['name', 'abbr'], columnTitles: ['Name', 'Abbreviation']};
 
-    OCCModule.CrudBase.call(this, $scope, QualityService, dataItems, Settings);
+    $injector.invoke(OCCModule.CrudBase, this, {$scope: $scope, service: QualityService, dataItems: dataItems});
 });

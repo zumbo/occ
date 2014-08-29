@@ -1,10 +1,9 @@
-OCCModule.controller('EpochController', function ($scope, EpochService, dataItems, Settings) {
+OCCModule.controller('EpochController', function ($scope, $injector, EpochService, dataItems) {
     $scope.title = 'Epochs';
-    var toColumn = new
-        String('endYear');
+    var toColumn = new String('endYear');
     toColumn.isOptional = true;
     $scope.data = { columns: ['name', 'startYear', toColumn], columnTitles: ['Name', 'From', 'To']};
     $scope.filterByTerritory = true;
 
-    OCCModule.CrudBase.call(this, $scope, EpochService, dataItems, Settings);
+    $injector.invoke(OCCModule.CrudBase, this, {$scope: $scope, service: EpochService, dataItems: dataItems});
 });

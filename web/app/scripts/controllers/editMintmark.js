@@ -1,6 +1,7 @@
-OCCModule.controller('MintmarkController', function ($scope, MintmarkService, dataItems, Settings) {
+OCCModule.controller('MintmarkController', function ($scope, $injector, MintmarkService, dataItems) {
     $scope.title = 'Mint marks';
     $scope.data = { columns: ['name', 'mintname'], columnTitles: ['Name', 'Mint']};
     $scope.filterByTerritory = true;
-    OCCModule.CrudBase.call(this, $scope, MintmarkService, dataItems, Settings);
+
+    $injector.invoke(OCCModule.CrudBase, this, {$scope: $scope, service: MintmarkService, dataItems: dataItems});
 });
